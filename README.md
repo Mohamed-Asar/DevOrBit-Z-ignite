@@ -27,12 +27,7 @@ DB_PASSWORD=root
 
 ### 1. Build and Start Containers
 
-✅ **Rebuild Everything (MANDATORY)**
-
-Because the Dockerfile configures the underlying image, always build with the `--no-cache` flag the first time or if the `Dockerfile` changes:
-
 ```bash
-docker-compose down
 docker-compose build --no-cache
 docker-compose up -d
 ```
