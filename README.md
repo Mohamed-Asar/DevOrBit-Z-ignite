@@ -75,11 +75,6 @@ To run the Vite development server with Hot Module Replacement (HMR) within the 
 docker-compose exec app npm install
 docker-compose exec app npm run dev
 ```
-
-* ✔ No more Wayfinder crash
-* ✔ PHP available
-* ✔ Artisan works
-
 ---
 
 ## 🌐 Accessing the App
