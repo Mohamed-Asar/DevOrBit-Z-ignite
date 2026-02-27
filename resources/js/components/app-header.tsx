@@ -134,13 +134,14 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
                         </Sheet>
                     </div>
 
-                    <Link
-                        href={dashboard()}
-                        prefetch
-                        className="flex items-center space-x-2"
-                    >
-                        <AppLogo />
-                    </Link>
+                    <div className="flex items-center gap-4">
+                        <Link href={dashboard()} prefetch className="lg:hidden flex items-center space-x-2">
+                            <AppLogo />
+                        </Link>
+                        <h2 className="text-base font-semibold text-foreground hidden lg:block">
+                            Welcome back, <span className="text-gradient">{auth.user.name.split(' ')[0]}</span>
+                        </h2>
+                    </div>
 
                     {/* Desktop Navigation */}
                     <div className="ml-6 hidden h-full items-center space-x-6 lg:flex">
@@ -219,17 +220,17 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
                             <DropdownMenuTrigger asChild>
                                 <Button
                                     variant="ghost"
-                                    className="size-10 rounded-full p-1"
+                                    className="h-auto p-1 pr-2 rounded-xl flex items-center gap-3 hover:bg-muted/50"
                                 >
-                                    <Avatar className="size-8 overflow-hidden rounded-full">
-                                        <AvatarImage
-                                            src={auth.user.avatar}
-                                            alt={auth.user.name}
-                                        />
-                                        <AvatarFallback className="rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white">
-                                            {getInitials(auth.user.name)}
-                                        </AvatarFallback>
-                                    </Avatar>
+                                    <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-primary-foreground text-sm font-bold shadow-sm">
+                                        {getInitials(auth.user.name)}
+                                    </div>
+                                    <div className="hidden sm:block text-left">
+                                        <p className="text-sm font-semibold text-foreground leading-tight">{auth.user.name}</p>
+                                        <div className="inline-flex items-center px-1.5 py-0 h-4 font-medium border border-primary/20 text-primary mt-0.5 rounded text-[10px]">
+                                            {auth.user.roles && auth.user.roles.length > 0 ? auth.user.roles[0] : 'User'}
+                                        </div>
+                                    </div>
                                 </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent className="w-56" align="end">
