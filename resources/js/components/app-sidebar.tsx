@@ -15,6 +15,7 @@ import {
 import type { NavItem } from '@/types';
 import AppLogo from './app-logo';
 import { dashboard } from '@/routes';
+import { ProtectRoute } from './auth/ProtectRoute';
 
 const mainNavItems: NavItem[] = [
     {
@@ -57,7 +58,9 @@ export function AppSidebar() {
             </SidebarContent>
 
             <SidebarFooter>
-                <NavFooter items={footerNavItems} className="mt-auto" />
+                <ProtectRoute role="Super Admin">
+                    <NavFooter items={footerNavItems} className="mt-auto" />
+                </ProtectRoute>
                 <NavUser />
             </SidebarFooter>
         </Sidebar>
